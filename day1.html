@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Proposal</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffccd5;
+    font-family:Arial;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    width:320px;
+}
+
+/* QUESTION */
+#question{
+    font-size:22px;
+    color:#ff4d6d;
+    margin-bottom:20px;
+}
+
+/* BUTTONS */
+button{
+    padding:10px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#yesBtn{
+    background:#ff4d6d;
+    color:white;
+}
+
+#noBtn{
+    background:#999;
+    color:white;
+    position:relative;
+}
+
+/* HIDDEN VALENTINE CARD */
+#valentine{
+    display:none;
+}
+
+.happy{
+    font-size:26px;
+    color:#ff4d6d;
+    margin-bottom:30px;
+}
+
+/* ❤️ HEART */
+.heart{
+    position:relative;
+    width:150px;
+    height:150px;
+    margin:auto;
+    background:#ff4d6d;
+    transform:rotate(-45deg);
+    animation:beat 1s infinite;
+}
+
+.heart:before,
+.heart:after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:#ff4d6d;
+    border-radius:50%;
+}
+
+.heart:before{
+    top:-75px;
+    left:0;
+}
+
+.heart:after{
+    left:75px;
+    top:0;
+}
+
+/* Heartbeat */
+@keyframes beat{
+    0%{transform:rotate(-45deg) scale(1);}
+    50%{transform:rotate(-45deg) scale(1.15);}
+    100%{transform:rotate(-45deg) scale(1);}
+}
+
+/* ❤️ NAMES INSIDE HEART */
+.heart-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    font-size:18px;
+    z-index:10;   /* 🔥 FIXED – brings text to front */
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- QUESTION -->
+    <div id="proposal">
+        <div id="question">Will you be my Valentine? 💕</div>
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 💔</button>
+    </div>
+
+    <!-- VALENTINE RESULT -->
+    <div id="valentine">
+        <div class="happy">💖 Happy Valentine’s Day 💖</div>
+        <div class="heart">
+            <div class="heart-content">
+                Dava <br> ❤️ <br> Kameswari
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const proposal = document.getElementById("proposal");
+const valentine = document.getElementById("valentine");
+
+/* NO button escape */
+noBtn.addEventListener("mouseover", () => {
+    const moveY = Math.random() * 100 - 50;
+    noBtn.style.transform = `translateY(${moveY}px)`;
+});
+
+/* YES button */
+yesBtn.addEventListener("click", () => {
+    proposal.style.display = "none";
+    valentine.style.display = "block";
+});
+</script>
+
+</body>
+</html>
+
+
+
